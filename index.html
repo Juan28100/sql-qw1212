@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#d5c684" />
+    <title>SQL: Pasillos de datos</title>
+  </head>
+  <body>
+    <div id="world" aria-label="Pasillo 3D para explorar">
+      <div id="loading" class="loading">Preparando el pasillo…</div>
+    </div>
+
+    <header class="topbar">
+      <div class="brand"><span class="brand-dot"></span> SQL: PASILLOS DE DATOS</div>
+      <div id="levelBadge" class="level-badge">Nivel 1 de 3</div>
+      <button id="soundButton" class="quiet-button" type="button" aria-pressed="false">Sonido: apagado</button>
+    </header>
+
+    <main>
+      <section id="welcome" class="welcome card" aria-labelledby="welcomeTitle">
+        <p class="eyebrow">Una aventura tranquila</p>
+        <h1 id="welcomeTitle">¡Hola, explorador!</h1>
+        <p>Busca los datos en el pasillo y ayúdalos con SQL. No hay prisa.</p>
+        <button id="startButton" class="primary-button" type="button">Entrar al pasillo</button>
+        <p class="small-note">Ratón para mirar · WASD o flechas para andar</p>
+      </section>
+
+      <section id="lesson" class="lesson card hidden" aria-live="polite">
+        <div class="lesson-topline">
+          <span id="conceptTag" class="concept-tag">SELECT + WHERE</span>
+          <span id="stepCounter" class="step-counter">1 / 3</span>
+        </div>
+        <h2 id="taskTitle">Busca frutas amarillas</h2>
+        <p id="taskText" class="task-text"></p>
+        <div id="hintBox" class="hint-box"></div>
+        <div class="editor-label-row">
+          <label for="sqlInput">Tu consulta</label>
+          <button id="exampleButton" class="text-button" type="button">Ver una pista</button>
+        </div>
+        <textarea id="sqlInput" rows="3" spellcheck="false" autocomplete="off" autocapitalize="off" aria-label="Escribe tu consulta SQL"></textarea>
+        <div class="action-row">
+          <button id="runButton" class="primary-button" type="button">Probar consulta</button>
+          <span class="key-hint">Ctrl + Enter</span>
+        </div>
+        <div id="feedback" class="feedback" role="status" aria-live="polite">¡Tú puedes! Prueba cuando quieras.</div>
+        <div id="results" class="results" aria-live="polite"></div>
+        <button id="nextButton" class="next-button hidden" type="button">Seguir al próximo nivel →</button>
+      </section>
+
+      <aside class="controls-card" aria-label="Controles del juego">
+        <div class="move-pad">
+          <button class="move-button up" data-move="forward" aria-label="Avanzar">▲</button>
+          <button class="move-button left" data-move="left" aria-label="Mover a la izquierda">◀</button>
+          <button class="move-button down" data-move="back" aria-label="Retroceder">▼</button>
+          <button class="move-button right" data-move="right" aria-label="Mover a la derecha">▶</button>
+        </div>
+        <div class="controls-copy"><strong>Mira y pasea</strong><span>Ratón para mirar</span><span>WASD o flechas para andar</span></div>
+      </aside>
+
+      <div class="crosshair" aria-hidden="true"><span></span></div>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

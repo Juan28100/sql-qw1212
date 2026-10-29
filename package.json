@@ -1,0 +1,45 @@
+{
+  "name": "sql-pasillos-3d",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Juego educativo local en primera persona para aprender SQL con Three.js.",
+  "main": "electron.cjs",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k \"vite --host 127.0.0.1\" \"wait-on http://127.0.0.1:5173 && cross-env VITE_DEV_SERVER_URL=http://127.0.0.1:5173 electron .\"",
+    "build": "vite build",
+    "start": "electron .",
+    "test": "node --test",
+    "test:sql": "node --test src/sql-engine.test.js",
+    "dist:win": "npm run build && electron-builder --win nsis portable",
+    "dist:portable": "npm run build && electron-builder --win portable"
+  },
+  "dependencies": {
+    "three": "^0.180.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^45.1.0",
+    "electron-builder": "^26.0.12",
+    "vite": "^7.1.10",
+    "wait-on": "^8.0.4"
+  },
+  "build": {
+    "appId": "com.cue.sqlpasillos3d",
+    "productName": "SQL Pasillos 3D",
+    "directories": { "output": "release" },
+    "files": ["dist/**/*", "electron.cjs", "package.json"],
+    "win": { "target": ["nsis", "portable"] },
+    "nsis": {
+      "artifactName": "SQL-Pasillos-3D-${version}-${arch}-Instalador.${ext}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true
+    },
+    "portable": {
+      "artifactName": "SQL-Pasillos-3D-${version}-${arch}-Portable.${ext}"
+    }
+  }
+}
